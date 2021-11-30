@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import {StyleSheet, Text, View, TouchableOpacity, Image, FlatList} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity, Image, FlatList, ActivityIndicator} from 'react-native';
 
-const Detail = ({ Route	}) => {
+const Detail = ({ route	}) => {
 
 	const [data, setData] = useState([]);
 	const [isLoading, setLoading] = useEffect(true);
 
-	const urlresep = "https://masak-apa-tomorisakura.vercel.app/api/recipes/"+Route.params.data+"";
+	const urlresep = "https://masak-apa-tomorisakura.vercel.app/api/recipes/"+route.params.data+"";
 
 	const getDetailRecipes = async() => {
 		try{
