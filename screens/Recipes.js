@@ -1,31 +1,39 @@
 import React, {useState, useEffect} from 'react';
-import {StyleSheet, Text, View, TouchableOpacity, Image, FlatList} from 'react-native';
+import { StyleSheet, Text, View, ActivityIndicator, Image, ScrollView, TouchableOpacity, FlatList } from 'react-native';
 
-const Recipes = ({navigation}) => {
-	const [data, setData] = useState([]);
-	const [isLoading, setLoading] = useState(true);
 
-	const getRecipes = async() => {
-		try{
-			const response = await fetch("https://masak-apa-tomorisakura.vercel.app/api/recipes");
-			const json = await response.json();
-			setData(json.results);
-		}catch(error)
-		{
-			console.log(error);
-		}finally{
-			setLoading(false);
-		}
-	};
+const Recipes = ({navigation}) =>{
+    const [data, setData] = useState([]);
+    const [isLoading, setLoading] = useState(true);
 
-	const renderItem = ({item}) => {
-		return (
-			<TouchableOpacity onPress = {() => navigation.navigate("Detail")} style={styles.container}>
-				<Image source={{uri : item.thumb}} style={{width:300, height:250}} />
-				<Text style={styles.RecipesTitle}>{{uri : item.title}}</Text>
-			</TouchableOpacity>
-			);
-	};
+    
+    const getResepData = async () => {
+        try {
+            const response = await fetch("https://masak-apa-tomorisakura.vercel.app/api/recipes");
+            const json = await response.json();
+            setData(json.results);
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const renderItem = ({ item }) => {
+        return (
+            <TouchableOpacity onPress={() => navigation.navigate('Detail')}
+                style={styles.container}
+            >
+                
+                <Image source={{uri: item.thumb }}  style={{width:160, height:160}}/>
+                <Text style={styles.Title}>{item.title}</Text>
+				<Text style={{fontSize: 15, fontWeight: "bold"}}>{item.servings}</Text>
+				<Text style={{fontSize: 15, fontWeight: "bold"}}>{item.times}</Text>
+				<Text style={{fontSize: 15, fontWeight: "bold"}}>{item.portion}</Text>
+				<Text style={{fontSize: 15, fontWeight: "bold"}}>{item.dificulty}</Text>
+            </TouchableOpacity>
+        );
+    };
 
     useEffect(()=> {
         getResepData();
@@ -33,7 +41,7 @@ const Recipes = ({navigation}) => {
     }, [])
  
      
-    return (
+    return(
         <View>
             {
                 isLoading ? (
@@ -48,9 +56,8 @@ const Recipes = ({navigation}) => {
             }
         
         </View>
-    );
-
-} 
+    )
+}
 
 export default Recipes;
 
@@ -60,7 +67,7 @@ const styles = StyleSheet.create({
         padding: 20,
     },
 
-    RecipesTitle :{
+    Title :{
 
         margin:5,
         fontWeight:'bold',

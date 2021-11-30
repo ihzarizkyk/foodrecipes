@@ -35,10 +35,10 @@ const Detail = ({ route	}) => {
 						<Image source={{ uri : data.thumb}} style={{width: 250, height: 300}} />
 						<Text>{data.author.user}</Text>
 						<Text style={styles.judul}>{data.title}</Text>
-						<Text style={{fontsize: 50, fontweight: "bold"}}>{data.servings}</Text>
-						<Text style={{fontsize: 50, fontweight: "bold"}}>{data.times}</Text>
-						<Text style={{fontsize: 50, fontweight: "bold"}}>{data.portion}</Text>
-						<Text style={{fontsize: 50, fontweight: "bold"}}>{data.dificulty}</Text>
+						<Text style={{fontSize: 50, fontWeight: "bold"}}>{data.servings}</Text>
+						<Text style={{fontSize: 50, fontWeight: "bold"}}>{data.times}</Text>
+						<Text style={{fontSize: 50, fontWeight: "bold"}}>{data.portion}</Text>
+						<Text style={{fontSize: 50, fontWeight: "bold"}}>{data.dificulty}</Text>
 						</View>
 			}
 		</View>
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
 		width: "75%"
 	},
 	judul: {
-		fontsize: 70,
-		fontweight: "bold"
+		fontSize: 60,
+		fontWeight: "bold"
 	},
 })
