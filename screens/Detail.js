@@ -29,20 +29,23 @@ const Detail = ({ route	}) => {
 		<View>
 			{
 				isLoading ? (
-					<ActivityIndicator size="large" color="red" />
-					) : <View style={styles.container}>
+					<ActivityIndicator size="large" color="#2196F3" />
+					):(
+						<View style={styles.container}>
 						<Text style={{fontsize: 100, fontweight: "bold", marginTop: 10, marginBottom: 5}}>{route.params.data}</Text>
 						<Image source={{ uri : data.thumb}} style={{width: 250, height: 300}} />
 						<Text>{data.author.user}</Text>
 						<Text style={styles.judul}>{data.title}</Text>
-						<Text style={{fontSize: 50, fontWeight: "bold"}}>{data.servings}</Text>
-						<Text style={{fontSize: 50, fontWeight: "bold"}}>{data.times}</Text>
-						<Text style={{fontSize: 50, fontWeight: "bold"}}>{data.portion}</Text>
-						<Text style={{fontSize: 50, fontWeight: "bold"}}>{data.dificulty}</Text>
+						<Text style={{fontSize: 25, fontWeight: "bold"}}>{data.servings}</Text>
+						<Text style={{fontSize: 25, fontWeight: "bold"}}>{data.times}</Text>
+						<Text style={{fontSize: 25, fontWeight: "bold"}}>{data.portion}</Text>
+						<Text style={{fontSize: 25, fontWeight: "bold"}}>{data.dificulty}</Text>
+						<Text style={{fontSize: 25, fontWeight: "bold", marginTop: 5}}>{data.desc}</Text>
 						</View>
+					)
 			}
 		</View>
-		)
+		);
 }
 
 export default Detail;
@@ -55,7 +58,7 @@ const styles = StyleSheet.create({
 		width: "75%"
 	},
 	judul: {
-		fontSize: 60,
+		fontSize: 45,
 		fontWeight: "bold"
 	},
 })
