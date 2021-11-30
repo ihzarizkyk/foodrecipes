@@ -20,12 +20,51 @@ const Recipes = ({navigation}) => {
 
 	const renderItem = ({item}) => {
 		return (
-			<TouchableOpacity onPress = {() => navigation.navigate("Detail")}>
+			<TouchableOpacity onPress = {() => navigation.navigate("Detail")} style={styles.container}>
 				<Image source={{uri : item.thumb}} style={{width:300, height:250}} />
-				<Text>{{uri : item.title}}</Text>
+				<Text style={styles.RecipesTitle}>{{uri : item.title}}</Text>
 			</TouchableOpacity>
 			);
 	};
+
+    useEffect(()=> {
+        getResepData();
+    
+    }, [])
+ 
+     
+    return(
+        <View>
+            {
+                isLoading ? (
+                    <ActivityIndicator size="large" color="#2196F3"/>
+
+                ):(
+                    <FlatList
+                    data={data}
+                    keyExtractor={item => item.key}
+                    renderItem={renderItem}/>
+                )
+            }
+        
+        </View>
+    );
+
 } 
 
 export default Recipes;
+
+const styles = StyleSheet.create({ 
+    container: {
+        margin: 1,
+        padding: 20,
+    },
+
+    RecipesTitle :{
+
+        margin:5,
+        fontWeight:'bold',
+        fontSize: 24
+    }    
+
+})
