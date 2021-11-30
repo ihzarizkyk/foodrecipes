@@ -27,11 +27,11 @@ const styles = StyleSheet.create({
 		width: "75%"
 	},
 	header: {
-		fontSize: 120,
+		fontSize: 35,
 		fontWeight: "bold"
 	},
 	p: {
-		fontSize: 55,
+		fontSize: 20,
 		fontWeight: "bold"
 	}
 });

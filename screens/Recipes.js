@@ -33,7 +33,7 @@ const Recipes = ({navigation}) => {
     }, [])
  
      
-    return(
+    return (
         <View>
             {
                 isLoading ? (
